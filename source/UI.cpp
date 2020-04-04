@@ -207,7 +207,9 @@ void UI::drawCfwman() {
     
     flags.push_back("nogc");
     flags.push_back("debug");
-    flags.push_back("saveredirection");
+    //flags.push_back("saveredirection");
+    flags.push_back("cheatsenabledbydefault");
+    flags.push_back("alwayssavecheattoggles");
 
     for(unsigned int i=0;i<flags.size();i++) {
         mainMenu[3].subMenu.push_back(MenuOption(cfg::Name(flags[i]), "", bind(&UI::optCfwCfg, this, flags[i])));
@@ -334,10 +336,10 @@ UI::UI(string Title, string Version) {
     mainMenu[5].subMenu.push_back(MenuOption("Backup Boot0/1", "", bind(&UI::optDumpBoots, this)));
     mainMenu[5].subMenu.push_back(MenuOption("Backup NAND", "", bind(&UI::optDumpNand, this)));*/
     
-    mainMenu[6].subMenu.push_back(MenuOption("Reboot", "", bind(&UI::optReboot, this)));
-    mainMenu[6].subMenu.push_back(MenuOption("Shutdown", "", bind(&UI::optShutdown, this)));
+    mainMenu[4].subMenu.push_back(MenuOption("Reboot", "", bind(&UI::optReboot, this)));
+    mainMenu[4].subMenu.push_back(MenuOption("Shutdown", "", bind(&UI::optShutdown, this)));
     
-    mainMenu[7].subMenu.push_back(MenuOption("About", "", bind(&UI::optAbout, this)));
+    mainMenu[5].subMenu.push_back(MenuOption("About", "", bind(&UI::optAbout, this)));
     
     //Make dirs
     if(!FS::DirExists("/Toolkit"))  FS::MakeDir("/Toolkit", 0777);

@@ -18,10 +18,10 @@
 
 #include <switch.h>
 #include "Net/Request.hpp"
-#include "Tools/autorcm.hpp"
+//#include "Tools/autorcm.hpp"
 #include "Tools/kipmanager.hpp"
 #include "Tools/reinxconfig.hpp"
-#include "Tools/nandDump.hpp"
+//#include "Tools/nandDump.hpp"
 #include "Utils/unzip_utils.hpp"
 #include "FS.hpp"
 #include "UI.hpp"
@@ -94,6 +94,7 @@ void UI::optReiUpdate() {
         MessageBox("Update", "Update unsuccessful!", TYPE_OK);
     }
 }
+/*
 void UI::optAutoRCM() {
     bool res = MessageBox("Warning!", "THIS WRITES TO NAND.\nDo you want to continue?", TYPE_YES_NO);
     if(res) {
@@ -146,6 +147,7 @@ void UI::optDumpNand() {
         MessageBox("Warning!", "Not enough space on the SD card to write to!", TYPE_OK);
     }
 }
+*/
 
 /*
 * SubMenus
@@ -310,8 +312,8 @@ UI::UI(string Title, string Version) {
     mainMenu.push_back(MenuOption("Change splash", "Change ReiNX splash.bin image.", nullptr));
     mainMenu.push_back(MenuOption("KIP Manager", "Enable or disable KIPs. Requires a reboot to take effect.", nullptr));
     mainMenu.push_back(MenuOption("CFW Manager", "Enable or disable cfw options. Requires a reboot to take effect.", nullptr));
-    mainMenu.push_back(MenuOption("Toggle AutoRCM", "Toggles AutoRCM by writing to NAND.",  bind(&UI::optAutoRCM, this)));
-    mainMenu.push_back(MenuOption("Backup tool", "Backup various partitions from NAND.", nullptr));
+    //mainMenu.push_back(MenuOption("Toggle AutoRCM", "Toggles AutoRCM by writing to NAND.",  bind(&UI::optAutoRCM, this)));
+    //mainMenu.push_back(MenuOption("Backup tool", "Backup various partitions from NAND.", nullptr));
     mainMenu.push_back(MenuOption("Power", "Power options.", nullptr));
     mainMenu.push_back(MenuOption("Help", "Information in regards to this software.", nullptr));
     
@@ -328,9 +330,9 @@ UI::UI(string Title, string Version) {
     UI::drawKipman();
     UI::drawCfwman();
 
-    mainMenu[5].subMenu.push_back(MenuOption("Backup Cal0", "", bind(&UI::optDumpCal0, this)));
+    /*mainMenu[5].subMenu.push_back(MenuOption("Backup Cal0", "", bind(&UI::optDumpCal0, this)));
     mainMenu[5].subMenu.push_back(MenuOption("Backup Boot0/1", "", bind(&UI::optDumpBoots, this)));
-    mainMenu[5].subMenu.push_back(MenuOption("Backup NAND", "", bind(&UI::optDumpNand, this)));
+    mainMenu[5].subMenu.push_back(MenuOption("Backup NAND", "", bind(&UI::optDumpNand, this)));*/
     
     mainMenu[6].subMenu.push_back(MenuOption("Reboot", "", bind(&UI::optReboot, this)));
     mainMenu[6].subMenu.push_back(MenuOption("Shutdown", "", bind(&UI::optShutdown, this)));
